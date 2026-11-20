@@ -22,6 +22,7 @@ SW Expert Academy 문제 풀이와 학습 내용을 기록하는 저장소입니
 
 ## Progress
 
+<!-- PROGRESS-START -->
 | Level | Solved |
 |:---:|---:|
 | D1 | 0 |
@@ -32,8 +33,9 @@ SW Expert Academy 문제 풀이와 학습 내용을 기록하는 저장소입니
 | D6 | 0 |
 | D7 | 0 |
 | **Total** | **0** |
+<!-- PROGRESS-END -->
 
-문제를 풀 때마다 해당 난이도의 개수를 갱신합니다. 풀이를 올린 날짜는 각 파일의 GitHub 커밋 기록에서 확인할 수 있습니다.
+각 난이도 폴더에 풀이 파일을 추가하면 풀이 수가 자동으로 갱신됩니다. 풀이를 올린 날짜는 각 파일의 GitHub 커밋 기록에서 확인할 수 있습니다.
 
 ## Solution Notes
 
