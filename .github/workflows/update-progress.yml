@@ -1,0 +1,71 @@
+name: Update solved problem counts
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "D1/**/*.py"
+      - "D2/**/*.py"
+      - "D3/**/*.py"
+      - "D4/**/*.py"
+      - "D5/**/*.py"
+      - "D6/**/*.py"
+      - "D7/**/*.py"
+
+permissions:
+  contents: write
+
+jobs:
+  update-progress:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Update README counts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          levels = [f"D{number}" for number in range(1, 8)]
+          counts = {
+              level: sum(
+                  1
+                  for path in Path(level).rglob("*.py")
+                  if path.name != "template.py"
+              )
+              for level in levels
+          }
+          total = sum(counts.values())
+
+          rows = [
+              "| Level | Solved |",
+              "|:---:|---:|",
+              *(f"| {level} | {counts[level]} |" for level in levels),
+              f"| **Total** | **{total}** |",
+          ]
+
+          readme_path = Path("README.md")
+          readme = readme_path.read_text(encoding="utf-8")
+          start_marker = "<!-- PROGRESS-START -->"
+          end_marker = "<!-- PROGRESS-END -->"
+          start = readme.index(start_marker) + len(start_marker)
+          end = readme.index(end_marker, start)
+          updated = readme[:start] + "\n" + "\n".join(rows) + "\n" + readme[end:]
+
+          if updated != readme:
+              readme_path.write_text(updated, encoding="utf-8")
+          PY
+
+      - name: Commit updated counts
+        run: |
+          if git diff --quiet; then
+            echo "Solved counts are already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update solved problem counts"
+          git push
