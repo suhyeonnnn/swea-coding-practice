@@ -8,7 +8,7 @@ SW Expert Academy 문제 풀이와 학습 과정을 기록합니다.
 
 [![Platform](https://img.shields.io/badge/Platform-SW_Expert_Academy-2F80ED?style=flat-square)](https://swexpertacademy.com/main/main.do)
 [![Language](https://img.shields.io/badge/Language-Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
-[![Problems Solved](https://img.shields.io/badge/Problems_Solved-1-2EA44F?style=flat-square)](#progress)
+![Progress](https://img.shields.io/badge/Progress-auto--tracked-2EA44F?style=flat-square)
 
 </div>
 
